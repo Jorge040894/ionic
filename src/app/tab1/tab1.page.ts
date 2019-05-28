@@ -11,111 +11,69 @@ import {campos} from '../classes/campos';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page /*implements OnInit, OnDestroy, AfterViewInit*/ {
+  //creamos una variable en la cual indicamos que resive datos de cualquir tipo
+  //indicamos los parametros que contendra lo cuales utlizaremos en el spring
+  //y las declaramos de forma global para sehir usandolas 
+  person: any = {
+    primerNombre: '',
+    segundoNombre: '',
+    edad: ''
+  };
+  
+  personas: any[]; // una propiedad que recibe datos de cualquier tipo 
 
+  action: string = 'agregar'; // se crea una propiedad que se utilizara para un boton
 
-/*
-  // definir "FormGroup" para ingreso de datos por formulario
-  public formGroup: FormGroup;
+  constructor(private personaService: apiservice) {
+    this.getRefresh();
+  }
+// el sendForm nos sirve para enviar los datos via post este lo llamamos 
+//desde el html y se le instancia a un boton para su ejecucion y tambien la usamos para el Put
 
-  constructor(private apiservice: apiservice) {
+  sendForm(){
+    //No permite que las casillas nombre y apellido envien datos vacios 
+    if(this.person.primerNombre != '' && this.person.segundoNombre != '') {
+      if (this.action == 'agregar'){
+        this.personaService.create(this.person).subscribe(response => {
+          this.getRefresh();
+          this.person = {
+            primerNombre: '',
+            segundoNombre: '',
+            edad: ''
+          }; 
+        });
+      }
+      if (this.action == 'actualizar'){
+        console.log('Update');
+        console.log(this.person);
+        this.personaService.update(this.person).subscribe(response => {
+          this.getRefresh();
+          this.person = {
+            primerNombre: '',
+            segundoNombre: '',
+            edad: ''
+          };
+          this.action = 'agregar' 
+        });
+      }
 
+    }
   }
 
-    public onClick(): void {
-    console.log('on click');
-  }
 
-   public enviarFormulario(): void {
-    console.log('Datos de formulario:' + JSON.stringify(this.formGroup.value));
 
-    let parametros: any = null;
-    parametros = Object.assign({}, this.formGroup.value);
-
-    let datosAEnviar: any = {
-      primerNombre: parametros.nombre,
-      segundoNombre: parametros.apellido,
-      edad: parametros.edad
-    };
-
-    console.log('Datos a enviar:' + JSON.stringify(datosAEnviar));
-
-    this.apiservice.create(datosAEnviar).subscribe(result => {
-      console.log('Datos from server:' + JSON.stringify(result));
+  getRefresh(){
+    this.personaService.personaList([]).subscribe(response=>{
+      this.personas = response;
     });
   }
 
-
-  public actualizarFormulario(): void {
-
-    let parametros: any = null;
-    parametros = Object.assign({}, this.formGroup.value);
-
-    let datosAEnviar: any = {
-      primerNombre: parametros.nombre,
-      segundoNombre: parametros.apellido,
-      edad: parametros.edad
-    };
-
-    console.log('Datos a enviar:' + JSON.stringify(datosAEnviar));
-
-    this.apiservice.update(datosAEnviar).subscribe(result => {
-      console.log('Datos from server:' + JSON.stringify(result));
-    });
+  showItem(item: any, index: number) {
+    this.action = 'actualizar';
+    this.person.id = index;
+    this.person.primerNombre = item.primerNombre;
+    this.person.segundoNombre = item.segundoNombre;
+    this.person.edad = item.edad;
   }
-
-  /*
-   private initForm(): void {
-    this.formGroup = new FormGroup({
-      nombre: new FormControl('', []
-      ),
-      apellido: new FormControl('', []
-      ),
-      edad: new FormControl('', []
-      )
-    }); 
-
-
-  }
-
-  ngAfterViewInit(): void {
-    console.log('on after view');
-  }
-
-  ngOnDestroy(): void {
-    console.log('on destroy');
-  }
-
- 
-
-  ngOnInit(): void {
-
-    console.log('on init');
-
-    // iniciar formulario
-    this.initForm();
-
-    
-    // ejecutar llamada de servicio restful al iniciar la aplicacion
-    this.apiservice.personaList(null).subscribe((result) => {
-        console.log('RESULTADO:' + JSON.stringify(result));
-      });
-	  */
-
 
 }
-
-
-
-
-
-
-
- 
- 
-
-
-
- 
-      
-
-

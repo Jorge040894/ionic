@@ -10,7 +10,7 @@ export class apiservice
 	constructor(private httpclient: HttpClient){}
 
 /* -------------------------------------------------------------------------------------------------------------- */
-  private serviceURL = 'http://localhost:8585/persona';
+  private serviceURL = 'http://192.168.0.13:8585/persona';
 
   private httpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export class apiservice
   }
 
   obtener(): Observable<any> {
-	return this.httpclient.get("http://localhost:8585/persona/all");
-}
+	  return this.httpclient.get(this.serviceURL+"/all");
+  }
 
 }

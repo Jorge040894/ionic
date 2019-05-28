@@ -1,39 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Lista de personas
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+  <ion-card *ngFor="let item of lstcampos; let i = index">
+    <ion-card-header>
+      <ion-card-title>{{ item.primerNombre }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ item.segundoNombre }} - {{ item.edad }}
+    </ion-card-content>
+  </ion-card>
 <ion-content>
-
-<h1> Personas </h1>
-
-<table border="1">
-	<tr>
-<th>id</th>
-<th>Nombre</th>
-<th>Apellido</th>
-<th>eddad</th>
-	</tr>
-		<tr *ngFor="let d of lstcampos">
-<th>{{d.id}}</th>
-<th>{{d.primerNombre}}</th>
-<th>{{d.segundoNombre}}</th>
-<th>{{d.edad}}</th>
-		</tr>
-</table>    
-
-<ion-content padding>
-<ion-list>
-<ion-item *ngFor="let m of lstcampos">
-<p>Id:{{m.id}}</p>
-<p>Nombre:{{m.primerNombre}}</p>
-<p>Apellido:{{m.segundoNombre}}</p>
-<p>Edad:{{m.edad}}</p>
-</ion-item>
-</ion-list>
-</ion-content>
-
 </ion-content>

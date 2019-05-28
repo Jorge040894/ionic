@@ -7,6 +7,7 @@ import { Tab2Page } from './tab2.page';
 
 import { apiservice } from '../services/api.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NotificationService } from '../services/notification.service';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   declarations: [Tab2Page
   ],
-  providers:[apiservice]
+  providers:[apiservice, NotificationService]
 })
 export class Tab2PageModule {
 
