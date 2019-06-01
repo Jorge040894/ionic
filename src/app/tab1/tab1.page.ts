@@ -1,4 +1,3 @@
-/*import { Component } from '@angular/core';*/
 
 import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {apiservice} from '../services/api.service';
@@ -10,10 +9,7 @@ import {campos} from '../classes/campos';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page /*implements OnInit, OnDestroy, AfterViewInit*/ {
-  //creamos una variable en la cual indicamos que resive datos de cualquir tipo
-  //indicamos los parametros que contendra lo cuales utlizaremos en el spring
-  //y las declaramos de forma global para sehir usandolas 
+export class Tab1Page  {
   person: any = {
     primerNombre: '',
     segundoNombre: '',
@@ -27,12 +23,11 @@ export class Tab1Page /*implements OnInit, OnDestroy, AfterViewInit*/ {
   constructor(private personaService: apiservice) {
     this.getRefresh();
   }
-// el sendForm nos sirve para enviar los datos via post este lo llamamos 
-//desde el html y se le instancia a un boton para su ejecucion y tambien la usamos para el Put
 
   sendForm(){
     //No permite que las casillas nombre y apellido envien datos vacios 
-    if(this.person.primerNombre != '' && this.person.segundoNombre != '') {
+    if(this.person.primerNombre != '' && this.person.segundoNombre != '') 
+    {
       if (this.action == 'agregar'){
         this.personaService.create(this.person).subscribe(response => {
           this.getRefresh();

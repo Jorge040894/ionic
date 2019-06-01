@@ -1,17 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Lista de personas
+      Tabla
     </ion-title>
   </ion-toolbar>
 </ion-header>
-  <ion-card *ngFor="let item of lstcampos; let i = index">
-    <ion-card-header>
-      <ion-card-title>{{ item.primerNombre }}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{ item.segundoNombre }} - {{ item.edad }}
-    </ion-card-content>
-  </ion-card>
+
+
+
 <ion-content>
+
+    <ion-card *ngFor="let item of lstcampos; let i = index">
+        <ion-card-header>
+          <ion-card-title>{{ item.primerNombre }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{ item.segundoNombre }} - {{ item.edad }}
+        </ion-card-content>
+      </ion-card>
+
 </ion-content>

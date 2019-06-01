@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-/*import { NavController } from 'ionic-angular';*/
 import { apiservice } from '../services/api.service';
 import { campos } from '../classes/campos';
 import {BehaviorSubject} from 'rxjs/index';
@@ -19,7 +18,8 @@ constructor(public servicio: apiservice,
 			private notificationService: NotificationService) {
 }
 
-   lstcampos:campos[];
+	 lstcampos:campos[];
+	 
    public envivo: BehaviorSubject<any>;
 
     ngOnInit() {

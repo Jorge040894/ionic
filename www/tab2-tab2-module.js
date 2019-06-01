@@ -6299,7 +6299,7 @@ var Tab2PageModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>\n      Lista de personas\n    </ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-card *ngFor=\"let item of lstcampos; let i = index\">\n    <ion-card-header>\n      <ion-card-title>{{ item.primerNombre }}</ion-card-title>\n    </ion-card-header>\n    <ion-card-content>\n      {{ item.segundoNombre }} - {{ item.edad }}\n    </ion-card-content>\n  </ion-card>\n<ion-content>\n</ion-content>"
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>\r\n      Lista de personas\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n  <ion-card *ngFor=\"let item of lstcampos; let i = index\">\r\n    <ion-card-header>\r\n      <ion-card-title>{{ item.primerNombre }}</ion-card-title>\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n      {{ item.segundoNombre }} - {{ item.edad }}\r\n    </ion-card-content>\r\n  </ion-card>\r\n<ion-content>\r\n</ion-content>"
 
 /***/ }),
 
